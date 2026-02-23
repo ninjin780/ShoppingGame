@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Potion
   Cost: 5
-  ImageUI: {fileID: 9094822216059529554, guid: 829cf6f9cc636ac4ca639a1278130d55, type: 3}
+  Description: Just what the doctor potion-ed.
+  ImageUI: {fileID: -6057291092951140283, guid: 803594932d521294abbbf86eb054340a,
+    type: 3}
   IsStackable: 1
-  HealthPoints: 10
+  HealthPoints: 15

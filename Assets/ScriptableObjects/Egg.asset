@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e7025596dbc34a4089bea838386f0f6, type: 3}
-  m_Name: Axe
+  m_Name: Egg
   m_EditorClassIdentifier: Assembly-CSharp::ItemWeapon
-  Name: Axe
-  Cost: 35
-  Description: Just a normal axe for cutting down trees
-  ImageUI: {fileID: 21300000, guid: a27bfbd93698612468ecbe60d9860480, type: 3}
-  IsStackable: 0
-  Damage: 30
+  Name: Egg
+  Cost: 0
+  Description: 'What, you egg? [Stabs him]'
+  ImageUI: {fileID: 5371744859156840167, guid: a9be59cd0b8ff0e409a4540b2260aa00, type: 3}
+  IsStackable: 1
+  Damage: 5

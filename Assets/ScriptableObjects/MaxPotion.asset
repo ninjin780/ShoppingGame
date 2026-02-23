@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: MaxPotion
   Cost: 60
-  Description: This potion can restore the full health bar
-  ImageUI: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  Description: To the max and back again.
+  ImageUI: {fileID: 1966115951318759457, guid: a4e95f49253b16746b31185b992221d5, type: 3}
   IsStackable: 1
   HealthPoints: 100

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f9884d1f8c99a941ab2a468c4a5afc8, type: 3}
-  m_Name: Banana
+  m_Name: Pear
   m_EditorClassIdentifier: Assembly-CSharp::ItemFood
-  Name: Banana
+  Name: Pear
   Cost: 2
-  Description: The best banana of canarias
-  ImageUI: {fileID: 21300000, guid: f64a418a4245b9e42abc9a2344bfa74e, type: 3}
+  Description: Simply pear-fect for a quick bite.
+  ImageUI: {fileID: 5490403348008384694, guid: 8bc4b8a0440aea242bbd3a7bde8b2e3b, type: 3}
   IsStackable: 1
   EnergyPoints: 5
