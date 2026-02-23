@@ -10,6 +10,7 @@ public class InventoryUI : MonoBehaviour
 
     void Start()
     {
+        itemSlotList = new List<GameObject>();
         FillInventoryUI(Inventory);
     }
 
@@ -42,11 +43,6 @@ public class InventoryUI : MonoBehaviour
 
     private void FillInventoryUI(Inventory inventory)
     {
-        // Lazy initialization for objects list
-        if (itemSlotList == null) itemSlotList = new List<GameObject>();
-
-        if (itemSlotList.Count > 0) ClearInventoryUI();
-
         for (int i = 0; i < inventory.Length; i++)
         {
             itemSlotList.Add(AddSlot(inventory.GetSlot(i)));
