@@ -1,3 +1,4 @@
+using System.Reflection;
 using TMPro;
 using UnityEngine;
 
@@ -8,20 +9,31 @@ public class MoneyManager : MonoBehaviour
     [SerializeField] private int money = 100;
     [SerializeField] private TextMeshProUGUI moneyText;
 
-    public int Money => money;
-
     private void Awake()
     {
-        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
         RefreshUI();
     }
 
-    public bool CanAfford(int amount) => money >= amount;
+    private void OnEnable()
+    {
+        Localizer.OnLanguageChange += RefreshUI;
+    }
+
+    private void OnDisable()
+    {
+        Localizer.OnLanguageChange -= RefreshUI;
+    }
 
     public bool Spend(int amount)
     {
-        if (!CanAfford(amount)) return false;
+        if (money < amount) return false;
         money -= amount;
         RefreshUI();
         return true;
@@ -35,7 +47,38 @@ public class MoneyManager : MonoBehaviour
 
     private void RefreshUI()
     {
-        if (moneyText != null)
-            moneyText.text = "Money: " + money;
+        if (moneyText == null) return;
+
+        moneyText.text = $"{GetMoneyLabel()}: {money}";
+    }
+
+    private string GetMoneyLabel()
+    {
+        Language lang = GetCurrentLanguage();
+
+        switch (lang)
+        {
+            case Language.Spanish:
+                return "Dinero";
+            case Language.Catalan:
+                return "Diners";
+            case Language.English:
+                return "Money";
+            default:
+                return "Money";
+        }
+    }
+
+    private Language GetCurrentLanguage()
+    {
+        FieldInfo field = typeof(Localizer).GetField(
+            "currentLanguage",
+            BindingFlags.NonPublic | BindingFlags.Instance
+        );
+
+        if (field == null || Localizer.Instance == null)
+            return Language.English;
+
+        return (Language)field.GetValue(Localizer.Instance);
     }
 }
