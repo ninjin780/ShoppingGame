@@ -6,6 +6,8 @@ public class MoneyManager : MonoBehaviour
 {
     public static MoneyManager Instance { get; private set; }
 
+    private const string MONEY_KEY = "MONEY_VALUE";
+
     [SerializeField] private int money = 100;
     [SerializeField] private TextMeshProUGUI moneyText;
 
@@ -18,6 +20,8 @@ public class MoneyManager : MonoBehaviour
         }
 
         Instance = this;
+
+        LoadMoney();
         RefreshUI();
     }
 
@@ -34,7 +38,9 @@ public class MoneyManager : MonoBehaviour
     public bool Spend(int amount)
     {
         if (money < amount) return false;
+
         money -= amount;
+        SaveMoney();
         RefreshUI();
         return true;
     }
@@ -42,6 +48,7 @@ public class MoneyManager : MonoBehaviour
     public void Add(int amount)
     {
         money += amount;
+        SaveMoney();
         RefreshUI();
     }
 
@@ -52,20 +59,28 @@ public class MoneyManager : MonoBehaviour
         moneyText.text = $"{GetMoneyLabel()}: {money}";
     }
 
+    private void SaveMoney()
+    {
+        PlayerPrefs.SetInt(MONEY_KEY, money);
+        PlayerPrefs.Save();
+    }
+
+    private void LoadMoney()
+    {
+        if (PlayerPrefs.HasKey(MONEY_KEY))
+            money = PlayerPrefs.GetInt(MONEY_KEY);
+    }
+
     private string GetMoneyLabel()
     {
         Language lang = GetCurrentLanguage();
 
         switch (lang)
         {
-            case Language.Spanish:
-                return "Dinero";
-            case Language.Catalan:
-                return "Diners";
-            case Language.English:
-                return "Money";
-            default:
-                return "Money";
+            case Language.Spanish: return "Dinero";
+            case Language.Catalan: return "Diners";
+            case Language.English: return "Money";
+            default: return "Money";
         }
     }
 
