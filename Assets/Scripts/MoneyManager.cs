@@ -36,6 +36,6 @@ public class MoneyManager : MonoBehaviour
     private void RefreshUI()
     {
         if (moneyText != null)
-            moneyText.text = "Dinero: " + money;
+            moneyText.text = "Money: " + money;
     }
 }
