@@ -29,6 +29,7 @@ public class ItemSelection : MonoBehaviour
     {
         if (slot != null)
         {
+            SlotSelected = slot;
             item = slot.GetItemBase();
             descriptionText.text = item.Name + ": " + item.Description;
         }
