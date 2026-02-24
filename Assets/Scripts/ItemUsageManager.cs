@@ -10,7 +10,7 @@ public class ItemUsageManager : MonoBehaviour
     {
         if (itemToUse == null) return;
 
-        if (itemToUse.isConsumable)
+        /*if (itemToUse.isConsumable)
         {
             playerHealth.Heal(itemToUse.lifeRestore);
             Debug.Log($"Has consumido {itemToUse.itemName} y recuperado {itemToUse.lifeRestore} de vida.");
@@ -22,5 +22,6 @@ public class ItemUsageManager : MonoBehaviour
         {
             Debug.Log("Este item no se puede consumir.");
         }
+        */
     }
 }
