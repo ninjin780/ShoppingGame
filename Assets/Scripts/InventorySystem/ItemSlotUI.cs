@@ -1,9 +1,11 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.UI;
 
-public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler
 {
     // NOTE: Inventory UI slots support drag&drop,
     // implementing the Unity provided interfaces by events system
@@ -17,6 +19,8 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private ItemBase item;
     private InventoryUI inventory;
 
+    public static event Action<ItemSlotUI> ItemClicked;
+
     public void Initialize(ItemSlot slot, InventoryUI inventory)
     {
         Image.sprite = slot.Item.ImageUI;
@@ -28,12 +32,13 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
         item = slot.Item;
         this.inventory = inventory;
+        canvas = GetComponentInParent<Canvas>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         // We need canvas as new UI reference (lazy initialization)
-        if (!canvas) canvas = GetComponentInParent<Canvas>();
+        
 
         // Store previous reference position
         parent = transform.parent;
@@ -75,5 +80,15 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
         // And centering item position
         transform.localPosition = Vector3.zero;
+    }
+
+    public ItemBase GetItemBase()
+    {
+        return item;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        ItemClicked?.Invoke(this);
     }
 }
