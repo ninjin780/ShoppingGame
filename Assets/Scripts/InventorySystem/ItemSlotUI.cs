@@ -23,7 +23,7 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         Image.SetNativeSize();
 
         AmountText.text = slot.Amount.ToString();
-        Price.text = slot.Item.Cost.ToString() + " €";
+        Price.text = slot.Item.Cost.ToString() + " c";
         AmountText.enabled = (slot.Amount > 1);
 
         item = slot.Item;
