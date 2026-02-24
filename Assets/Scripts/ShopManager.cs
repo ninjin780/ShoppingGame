@@ -1,7 +1,8 @@
 using NUnit.Framework.Interfaces;
 using UnityEngine;
+using static UnityEditor.Progress;
 
-public class ItemUsageManager : MonoBehaviour
+public class ShopManager : MonoBehaviour
 {
     public PlayerHealth playerHealth; // Arrastra aquí el objeto que tiene el script PlayerHealth
 
@@ -10,10 +11,10 @@ public class ItemUsageManager : MonoBehaviour
     {
         if (itemToUse == null) return;
 
-        if (itemToUse.isConsumable)
+        if (itemToUse is ConsumableItem)
         {
-            playerHealth.Heal(itemToUse.lifeRestore);
-            Debug.Log($"Has consumido {itemToUse.itemName} y recuperado {itemToUse.lifeRestore} de vida.");
+            playerHealth.Heal(ConsumableItem.Use(itemToUse));
+            Debug.Log($"Has consumido {itemToUse.Name} y recuperado {itemToUse.lifeRestore} de vida.");
 
             // IMPORTANTE: Aquí deberás añadir tu propia lógica para eliminar el item del inventario.
             // Ejemplo: PlayerInventory.RemoveItem(itemToUse);
