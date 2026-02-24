@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e81028e8ec0fa4b9857251ef0941ae, type: 3}
   m_Name: MaxPotion
   m_EditorClassIdentifier: 
-  Name: MaxPotion
+  Name: MAXPOTION_NAME
   Cost: 60
-  Description: To the max and back again.
+  Description: MAXPOTION_DESC
   ImageUI: {fileID: 1966115951318759457, guid: a4e95f49253b16746b31185b992221d5, type: 3}
   IsStackable: 1
   HealthPoints: 100

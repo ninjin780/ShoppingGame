@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f9884d1f8c99a941ab2a468c4a5afc8, type: 3}
   m_Name: Pear
   m_EditorClassIdentifier: Assembly-CSharp::ItemFood
-  Name: Pear
+  Name: PEAR_NAME
   Cost: 2
-  Description: Simply pear-fect for a quick bite.
+  Description: PEAR_DESC
   ImageUI: {fileID: 5490403348008384694, guid: 8bc4b8a0440aea242bbd3a7bde8b2e3b, type: 3}
   IsStackable: 1
   EnergyPoints: 5

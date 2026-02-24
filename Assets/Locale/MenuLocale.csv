@@ -2,3 +2,17 @@
 TITLE_MENU_START;> PRESS ENTER TO ENTER THE SHOP OF THE CAT;> PREM ENTER PER ENTRAR A LA BOTIGA DEL GAT;> PRESIONA ENTER PARA ENTRAR A LA TIENDA DEL GATO
 TITLE_MENU_INFO;YOU ARE GOING TO SEE THE BEST BOUTIQUE IN TOWN;ESTÀS A PUNT DE VEURE LA MILLOR BOTIGA DE LA CIUTAT;ESTÁS A PUNTO DE VER LA MEJOR TIENDA DE LA CIUDAD
 MENU_ENDING;GAME OVER;HAS PERDUT;HAS PERDIDO
+BOOK_NAME;Book;Llibre;Libro
+BOOK_DESC;Packing with spine-tingling knowledge.;Carregat de coneixement que posa la pell de gallina.;Cargado de conocimiento que pone la piel de gallina.
+CLEAVER_NAME;Cleaver;Ganivet de carnisser;Cuchilla de carnicero
+CLEAVER_DESC;Makes splitting decisions easy.;Fa que prendre decisions tallants sigui fàcil.;Hace que tomar decisiones tajantes sea fácil.
+EGG_NAME;Egg;Ou;Huevo
+EGG_DESC;What, you egg? [Stabs him];Què, tu, ou? [L’apunyala];¿Qué, tú, huevo? [Lo apuñala]
+KNIFE_NAME;Knife;Ganivet;Cuchillo
+KNIFE_DESC;A cut above the rest.;Un tall per sobre de la resta.;Un corte por encima del resto.
+MAXPOTION_NAME;Max Potion;Poció Màxima;Poción Máxima
+MAXPOTION_DESC;To the max and back again.;Al màxim i més enllà.;Al máximo y más allá.
+PEAR_NAME;Pear;Pera;Pera
+PEAR_DESC;Simply pear-fect for a quick bite.;Simplement pera-fecta per a un mos ràpid.;Simplemente pera-fecta para un bocado rápido.
+POTION_NAME;Potion;Poció;Poción
+POTION_DESC;Just what the doctor potion-ed.;Just el que el metge va receptar.;Justo lo que recetó el médico.

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7025596dbc34a4089bea838386f0f6, type: 3}
   m_Name: Cleaver
   m_EditorClassIdentifier: Assembly-CSharp::ItemWeapon
-  Name: Cleaver
+  Name: CLEAVER_NAME
   Cost: 0
-  Description: Makes splitting decision easy.
+  Description: CLEAVER_DESC
   ImageUI: {fileID: -8806668329424125255, guid: 371b78e628bb383489ce530caaec34f7,
     type: 3}
   IsStackable: 0

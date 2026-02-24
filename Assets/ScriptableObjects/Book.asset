@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa80158b5cf09b45853f9f7f1aaecae, type: 3}
   m_Name: Book
   m_EditorClassIdentifier: Assembly-CSharp::ItemBase
-  Name: Book
+  Name: BOOK_NAME
   Cost: 0
-  Description: Packing with spine-tingling knowledge.
+  Description: BOOK_DESC
   ImageUI: {fileID: 6013049221743230620, guid: 48cf0c0950970a24ea6dfb9abf05c9b7, type: 3}
   IsStackable: 0

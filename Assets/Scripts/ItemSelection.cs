@@ -7,22 +7,26 @@ public class ItemSelection : MonoBehaviour
     [SerializeField]
     public static ItemSlotUI SlotSelected;
     [SerializeField]
+    private TextMeshProUGUI nameText;
+    [SerializeField]
     private TextMeshProUGUI descriptionText;
     private ItemBase item;
 
     private void Awake()
     {
-        descriptionText.text = "No hay ningún item seleccionado";
+        descriptionText.text = "No hay ningï¿½n item seleccionado";
     }
 
     private void OnEnable()
     {
-        ItemSlotUI.ItemClicked += UseSelectedItem;   
+        ItemSlotUI.ItemClicked += UseSelectedItem;
+        Localizer.OnLanguageChange += ChangeLanguage;
     }
 
     private void OnDisable()
     {
         ItemSlotUI.ItemClicked -= UseSelectedItem;
+        Localizer.OnLanguageChange -= ChangeLanguage;
     }
 
     public void UseSelectedItem(ItemSlotUI slot)
@@ -31,7 +35,14 @@ public class ItemSelection : MonoBehaviour
         {
             SlotSelected = slot;
             item = slot.GetItemBase();
-            descriptionText.text = item.Name + ": " + item.Description;
+            nameText.text = Localizer.GetText(item.Name);
+            descriptionText.text = Localizer.GetText(item.Description);
         }
+    }
+
+    private void ChangeLanguage()
+    {
+        nameText.text = Localizer.GetText(item.Name);
+        descriptionText.text = Localizer.GetText(item.Description);
     }
 }
