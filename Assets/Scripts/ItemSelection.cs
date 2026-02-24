@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemSelection : MonoBehaviour
 {
     [SerializeField]
-    public ItemSlotUI ItemSlot;
+    public static ItemSlotUI SlotSelected;
     [SerializeField]
     private TextMeshProUGUI descriptionText;
     private ItemBase item;
