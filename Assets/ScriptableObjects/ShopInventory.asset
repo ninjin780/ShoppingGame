@@ -14,13 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   Slots:
   - Item: {fileID: 11400000, guid: 2af55f9b2ebd0c043bf04c175e0d5f91, type: 2}
-    Amount: 5
+    Amount: 3
+  - Item: {fileID: 11400000, guid: 6b52b9baafb5a6448a8d5b4c1bb0c9d6, type: 2}
+    Amount: -1
   - Item: {fileID: 11400000, guid: 1cda531d9b4ee3c4eb4ef60010c22b43, type: 2}
     Amount: 2
+  - Item: {fileID: 11400000, guid: f7f2a41165138994dac70cc31e6301b1, type: 2}
+    Amount: 2
+  - Item: {fileID: 11400000, guid: 0d677f96dd80af8449b5894d833d018f, type: 2}
+    Amount: 1
   StartSlots:
   - Item: {fileID: 11400000, guid: 2af55f9b2ebd0c043bf04c175e0d5f91, type: 2}
-    Amount: 5
+    Amount: 3
   - Item: {fileID: 11400000, guid: 6b52b9baafb5a6448a8d5b4c1bb0c9d6, type: 2}
-    Amount: 0
+    Amount: -1
   - Item: {fileID: 11400000, guid: 1cda531d9b4ee3c4eb4ef60010c22b43, type: 2}
     Amount: 2
+  - Item: {fileID: 11400000, guid: f7f2a41165138994dac70cc31e6301b1, type: 2}
+    Amount: 2
+  - Item: {fileID: 11400000, guid: 0d677f96dd80af8449b5894d833d018f, type: 2}
+    Amount: 1
+  - Item: {fileID: 11400000, guid: bc309cc303fb3ab44bca150603b7767a, type: 2}
+    Amount: 1
