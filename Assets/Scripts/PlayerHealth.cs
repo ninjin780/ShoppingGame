@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems; 
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour, IPointerDownHandler
 {
@@ -24,7 +25,11 @@ public class PlayerHealth : MonoBehaviour, IPointerDownHandler
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if (currentHealth < 0) currentHealth = 0;
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            SceneManager.LoadScene("Ending");
+        }
         UpdateLifeBar();
     }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +9,10 @@ public class Inventory : ScriptableObject
     // NOTE: One slot can contain multiple items of one type
 
     [SerializeField]
-    List<ItemSlot> Slots;
+    public List<ItemSlot> Slots;
+
+    [SerializeField]
+    public List<ItemSlot> StartSlots;
     public int Length => Slots.Count;
 
     public Action OnInventoryChange;

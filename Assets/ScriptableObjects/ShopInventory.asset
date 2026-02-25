@@ -15,7 +15,12 @@ MonoBehaviour:
   Slots:
   - Item: {fileID: 11400000, guid: 2af55f9b2ebd0c043bf04c175e0d5f91, type: 2}
     Amount: 5
+  - Item: {fileID: 11400000, guid: 1cda531d9b4ee3c4eb4ef60010c22b43, type: 2}
+    Amount: 2
+  StartSlots:
+  - Item: {fileID: 11400000, guid: 2af55f9b2ebd0c043bf04c175e0d5f91, type: 2}
+    Amount: 5
   - Item: {fileID: 11400000, guid: 6b52b9baafb5a6448a8d5b4c1bb0c9d6, type: 2}
-    Amount: 1
+    Amount: 0
   - Item: {fileID: 11400000, guid: 1cda531d9b4ee3c4eb4ef60010c22b43, type: 2}
     Amount: 2
