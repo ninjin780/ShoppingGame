@@ -33,6 +33,8 @@ public class ShopButtons : MonoBehaviour
     private int GetPrice(ItemBase item) => item.Cost;
     private int GetHealth(ItemPotion item) => item.HealthPoints;
 
+    private int GetEnergy(ItemFood item) => item.EnergyPoints;
+
     public void Buy()
     {
         var slotUI = ItemSelection.SlotSelected;
@@ -133,6 +135,14 @@ public class ShopButtons : MonoBehaviour
             if (item is ItemPotion)
             {
                 int gain = GetHealth(item as ItemPotion);
+
+                playerInventory.RemoveItem(item);
+
+                PlayerHealth.Instance.Heal(gain);
+            }
+            else if (item is ItemFood)
+            {
+                int gain = GetEnergy(item as ItemFood);
 
                 playerInventory.RemoveItem(item);
 
