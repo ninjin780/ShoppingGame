@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 234651220}
   - component: {fileID: 6004142133801907285}
   - component: {fileID: 304618499566754799}
+  - component: {fileID: -8063634114715744240}
   m_Layer: 5
   m_Name: ItemSlotPrefab
   m_TagString: Untagged
@@ -265,6 +266,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 71.79968, y: 71.75943}
   m_EdgeRadius: 0
+--- !u!225 &-8063634114715744240
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4176061043146347162}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6799998231035903654
 GameObject:
   m_ObjectHideFlags: 0

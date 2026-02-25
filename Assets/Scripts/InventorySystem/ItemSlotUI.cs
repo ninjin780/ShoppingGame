@@ -18,8 +18,11 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private Transform parent;
     private ItemBase item;
     private InventoryUI inventory;
+    private CanvasGroup canvasGroup;
 
     public static event Action<ItemSlotUI> ItemClicked;
+    public static event Action BuyItem;
+    public static event Action SellItem;
 
     public void Initialize(ItemSlot slot, InventoryUI inventory)
     {
@@ -33,13 +36,11 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         item = slot.Item;
         this.inventory = inventory;
         canvas = GetComponentInParent<Canvas>();
+        canvasGroup = GetComponent<CanvasGroup>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        // We need canvas as new UI reference (lazy initialization)
-        
-
         // Store previous reference position
         parent = transform.parent;
 
@@ -48,6 +49,7 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         
         // And set it as last child to be rendered on top of UI
         transform.SetAsLastSibling();
+        canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -58,28 +60,38 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        
         // Find scene objects colliding with mouse point on end dragging
-        RaycastHit2D hitData = Physics2D.GetRayIntersection(
-            Camera.main.ScreenPointToRay(Input.mousePosition));
+        GameObject hitData = eventData.pointerCurrentRaycast.gameObject;
+
+        canvasGroup.blocksRaycasts = true;
+
+
+
 
         if (hitData)
         {
-            Debug.Log("Drop over object: " + hitData.collider.gameObject.name);
-
-            var consumer = hitData.collider.gameObject.GetComponent<IConsume>();
-
-            if ((consumer != null) && (item is ConsumableItem))
+            if (hitData.GetComponent<InventoryUI>())
             {
-                (item as ConsumableItem).Use(consumer);
-                inventory.UseItem(item);
+                if (hitData.GetComponent<InventoryUI>().tag == "Shop" && ItemSelection.SlotSelected.inventory.tag == "Player")
+                {
+                    SellItem?.Invoke();
+                }
+                else if (hitData.GetComponent<InventoryUI>().tag == "Player" && ItemSelection.SlotSelected.inventory.tag == "Shop")
+                {
+                    BuyItem?.Invoke();
+                }
+                else
+                {
+                    ResetPosition();
+                }
+            }
+            else
+            {
+                ResetPosition();
             }
         }
-
-        // Changing parent back to slot
-        transform.SetParent(parent.transform);
-
-        // And centering item position
-        transform.localPosition = Vector3.zero;
+        Debug.Log("Drop over object: " + hitData.name);
     }
 
     public ItemBase GetItemBase()
@@ -87,8 +99,18 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         return item;
     }
 
+    public InventoryUI GetInventory()
+    {
+        return inventory;
+    }
     public void OnPointerDown(PointerEventData eventData)
     {
         ItemClicked?.Invoke(this);
+    }
+
+    public void ResetPosition()
+    {
+        transform.SetParent(parent.transform);
+        transform.localPosition = Vector3.zero;
     }
 }

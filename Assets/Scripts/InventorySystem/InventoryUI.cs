@@ -6,11 +6,13 @@ public class InventoryUI : MonoBehaviour
     public Inventory Inventory;
     public ItemSlotUI SlotPrefab;
 
+    List<GameObject> itemStartSlotList;
     List<GameObject> itemSlotList;
 
     void Start()
     {
         itemSlotList = new List<GameObject>();
+        itemStartSlotList = new List<GameObject>();
         FillInventoryUI(Inventory);
     }
 

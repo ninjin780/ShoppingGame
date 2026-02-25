@@ -10,6 +10,17 @@ public class ShopButtons : MonoBehaviour
     [SerializeField] private Transform playerUIRoot;
     [SerializeField] private Transform shopUIRoot;
 
+    public void OnEnable()
+    {
+        ItemSlotUI.BuyItem += Buy;
+        ItemSlotUI.SellItem += Sell;
+    }
+    public void OnDisable()
+    {
+        ItemSlotUI.BuyItem -= Buy;
+        ItemSlotUI.SellItem -= Sell;
+    }
+
     private int GetPrice(ItemBase item) => item.Cost;
 
     public void Buy()
@@ -21,7 +32,7 @@ public class ShopButtons : MonoBehaviour
             return;
         }
 
-        if (shopUIRoot == null || !slotUI.transform.IsChildOf(shopUIRoot))
+        if (shopUIRoot == null || (slotUI as ItemSlotUI).GetInventory().tag != "Shop")
         {
             Debug.Log("Solo puedes comprar items de la tienda");
             return;
@@ -39,6 +50,7 @@ public class ShopButtons : MonoBehaviour
         if (!MoneyManager.Instance.Spend(price))
         {
             Debug.Log("No tienes suficiente dinero");
+            slotUI.ResetPosition();
             return;
         }
 
@@ -57,7 +69,7 @@ public class ShopButtons : MonoBehaviour
             return;
         }
 
-        if (playerUIRoot == null || !slotUI.transform.IsChildOf(playerUIRoot))
+        if (playerUIRoot == null || (slotUI as ItemSlotUI).GetInventory().tag != "Player")
         {
             Debug.Log("Solo puedes vender items de tu inventario");
             return;
