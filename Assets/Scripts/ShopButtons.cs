@@ -15,7 +15,8 @@ public class ShopButtons : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip buySound;
     [SerializeField] private AudioClip sellSound;
-
+    [SerializeField] private AudioClip eatSound;
+    [SerializeField] private AudioClip drinkSound;
 
     public void OnEnable()
     {
@@ -134,6 +135,8 @@ public class ShopButtons : MonoBehaviour
             }
             if (item is ItemPotion)
             {
+                audioSource.PlayOneShot(drinkSound);
+
                 int gain = GetHealth(item as ItemPotion);
 
                 playerInventory.RemoveItem(item);
@@ -142,6 +145,8 @@ public class ShopButtons : MonoBehaviour
             }
             else if (item is ItemFood)
             {
+                audioSource.PlayOneShot(eatSound);
+
                 int gain = GetEnergy(item as ItemFood);
 
                 playerInventory.RemoveItem(item);

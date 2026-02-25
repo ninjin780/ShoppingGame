@@ -618,6 +618,8 @@ MonoBehaviour:
   audioSource: {fileID: 1171093573}
   buySound: {fileID: 8300000, guid: 276c97948cc32064391618528c2e345a, type: 3}
   sellSound: {fileID: 8300000, guid: a9edf38d1a30823499d45e91bf8367c9, type: 3}
+  eatSound: {fileID: 8300000, guid: 9b9ad20b024f71f478f8524dbb53517f, type: 3}
+  drinkSound: {fileID: 8300000, guid: 8b7edc6ed84fcf84d825c05673d743d9, type: 3}
 --- !u!4 &267287524
 Transform:
   m_ObjectHideFlags: 0
@@ -2268,7 +2270,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: ea8596d0fde03184295c33a0a7e16302, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
