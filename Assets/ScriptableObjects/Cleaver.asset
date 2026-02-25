@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Cleaver
   m_EditorClassIdentifier: Assembly-CSharp::ItemWeapon
   Name: CLEAVER_NAME
-  Cost: 0
+  Cost: 45
   Description: CLEAVER_DESC
   ImageUI: {fileID: -8806668329424125255, guid: 371b78e628bb383489ce530caaec34f7,
     type: 3}
   IsStackable: 0
+  IsSelected: 0
   Damage: 40

@@ -117,6 +117,7 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     }
     public void OnPointerDown(PointerEventData eventData)
     {
+        item.IsSelected = true;
         ItemClicked?.Invoke(this);
     }
 

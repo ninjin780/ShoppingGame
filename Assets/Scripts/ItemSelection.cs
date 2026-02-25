@@ -6,7 +6,8 @@ public class ItemSelection : MonoBehaviour
 {
     [SerializeField]
     public static ItemSlotUI SlotSelected;
-    public Vector3 originalScale = new Vector3(1.5f,1.5f,1.5f); 
+    public static ItemSlotUI PreviousSlotSelected;
+    private Vector3 originalScale;
 
     [SerializeField]
     private TextMeshProUGUI nameText;
@@ -19,15 +20,32 @@ public class ItemSelection : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip selectedSFX;
 
+
     private void Awake()
     {
+        originalScale = new Vector3(1.5f, 1.5f, 1.5f);
         nameText.text = "";
-        descriptionText.text = "";
+        descriptionText.text = ""; 
+    }
+    private void Update()
+    {
+        if (SlotSelected != null && PreviousSlotSelected != SlotSelected)
+        {
+            if (PreviousSlotSelected != null)
+            {
+                PreviousSlotSelected.GetImage().transform.localScale = originalScale;
+                PreviousSlotSelected.GetItemBase().IsSelected = false;
+            }
+
+            SlotSelected.GetImage().transform.localScale = new Vector3(2f, 2f, 2f);
+            SlotSelected.GetItemBase().IsSelected = true;
+
+            PreviousSlotSelected = SlotSelected;
+        }
     }
 
     private void OnEnable()
     {
-        ItemSlotUI.ItemClicked += SelectionVFX;
         ItemSlotUI.ItemClicked += SelectionSound;
         ItemSlotUI.ItemClicked += UseSelectedItem;
         Localizer.OnLanguageChange += ChangeLanguage;
@@ -62,10 +80,5 @@ public class ItemSelection : MonoBehaviour
     private void SelectionSound(ItemSlotUI slot)
     {
        audioSource.PlayOneShot(selectedSFX);
-    }
-
-    private void SelectionVFX(ItemSlotUI slot)
-    {
-        slot.GetImage().transform.localScale = Vector3.one * 2.0f;
     }
 }

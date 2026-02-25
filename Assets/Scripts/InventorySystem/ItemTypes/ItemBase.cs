@@ -8,4 +8,5 @@ public class ItemBase : ScriptableObject
     public string Description;
     public Sprite ImageUI;
     public bool IsStackable;
+    public bool IsSelected;
 }

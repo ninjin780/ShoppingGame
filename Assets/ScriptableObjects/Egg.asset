@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Egg
   m_EditorClassIdentifier: Assembly-CSharp::ItemWeapon
   Name: EGG_NAME
-  Cost: 0
+  Cost: 5
   Description: EGG_DESC
   ImageUI: {fileID: 5371744859156840167, guid: a9be59cd0b8ff0e409a4540b2260aa00, type: 3}
   IsStackable: 1
+  IsSelected: 1
   Damage: 5
