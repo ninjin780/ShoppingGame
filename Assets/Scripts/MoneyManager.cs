@@ -56,7 +56,7 @@ public class MoneyManager : MonoBehaviour
     {
         if (moneyText == null) return;
 
-        moneyText.text = $"{GetMoneyLabel()}: {money}";
+        moneyText.text = Localizer.GetText("MONEY") + ": " + money;
     }
 
     private void SaveMoney()
@@ -69,31 +69,5 @@ public class MoneyManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey(MONEY_KEY))
             money = PlayerPrefs.GetInt(MONEY_KEY);
-    }
-
-    private string GetMoneyLabel()
-    {
-        Language lang = GetCurrentLanguage();
-
-        switch (lang)
-        {
-            case Language.Spanish: return "Dinero";
-            case Language.Catalan: return "Diners";
-            case Language.English: return "Money";
-            default: return "Money";
-        }
-    }
-
-    private Language GetCurrentLanguage()
-    {
-        FieldInfo field = typeof(Localizer).GetField(
-            "currentLanguage",
-            BindingFlags.NonPublic | BindingFlags.Instance
-        );
-
-        if (field == null || Localizer.Instance == null)
-            return Language.English;
-
-        return (Language)field.GetValue(Localizer.Instance);
     }
 }

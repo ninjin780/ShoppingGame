@@ -2,6 +2,9 @@
 TITLE_MENU_START;> PRESS ENTER TO ENTER THE SHOP OF THE CAT;> PREM ENTER PER ENTRAR A LA BOTIGA DEL GAT;> PRESIONA ENTER PARA ENTRAR A LA TIENDA DEL GATO
 TITLE_MENU_INFO;YOU ARE GOING TO SEE THE BEST BOUTIQUE IN TOWN;ESTÀS A PUNT DE VEURE LA MILLOR BOTIGA DE LA CIUTAT;ESTÁS A PUNTO DE VER LA MEJOR TIENDA DE LA CIUDAD
 MENU_ENDING;GAME OVER;HAS PERDUT;HAS PERDIDO
+SHOP;Shop;Botiga;Tienda
+INVENTORY;Inventory;Inventari;Inventario
+MONEY;Money;Diners;Dinero
 BOOK_NAME;Book;Llibre;Libro
 BOOK_DESC;Packing with spine-tingling knowledge.;Carregat de coneixement que posa la pell de gallina.;Cargado de conocimiento que pone la piel de gallina.
 CLEAVER_NAME;Cleaver;Ganivet de carnisser;Cuchilla de carnicero

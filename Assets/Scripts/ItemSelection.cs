@@ -14,7 +14,8 @@ public class ItemSelection : MonoBehaviour
 
     private void Awake()
     {
-        descriptionText.text = "No hay ning�n item seleccionado";
+        nameText.text = "";
+        descriptionText.text = "";
     }
 
     private void OnEnable()
@@ -42,7 +43,10 @@ public class ItemSelection : MonoBehaviour
 
     private void ChangeLanguage()
     {
-        nameText.text = Localizer.GetText(item.Name);
-        descriptionText.text = Localizer.GetText(item.Description);
+        if (item != null)
+        {
+            nameText.text = Localizer.GetText(item.Name);
+            descriptionText.text = Localizer.GetText(item.Description);
+        }
     }
 }
