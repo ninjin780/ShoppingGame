@@ -77,21 +77,28 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
                 {
                     SellItem?.Invoke();
                 }
+
                 else if (hitData.GetComponent<InventoryUI>().tag == "Player" && ItemSelection.SlotSelected.inventory.tag == "Shop")
                 {
                     BuyItem?.Invoke();
                 }
+
                 else
                 {
                     ResetPosition();
                 }
             }
+
             else
             {
                 ResetPosition();
             }
         }
-        Debug.Log("Drop over object: " + hitData.name);
+
+        else
+        {
+            ResetPosition();
+        }
     }
 
     public ItemBase GetItemBase()

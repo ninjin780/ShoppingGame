@@ -39,34 +39,37 @@ public class ShopButtons : MonoBehaviour
             return;
         }
 
-        if (shopUIRoot == null || (slotUI as ItemSlotUI).GetInventory().tag != "Shop")
+        if (slotUI.transform.IsChildOf(shopUIRoot) || (slotUI as ItemSlotUI).GetInventory().tag != "Player")
         {
-            Debug.Log("Solo puedes comprar items de la tienda");
-            return;
-        }
+            ItemBase item = slotUI.GetItemBase();
+            if (item == null)
+            {
+                Debug.Log("Slot vacío");
+                return;
+            }
 
-        ItemBase item = slotUI.GetItemBase();
-        if (item == null)
-        {
-            Debug.Log("Slot vacío");
-            return;
-        }
+            int price = GetPrice(item);
 
-        int price = GetPrice(item);
+            if (!MoneyManager.Instance.Spend(price))
+            {
+                Debug.Log("No tienes suficiente dinero");
+                slotUI.ResetPosition();
+                return;
+            }
 
-        if (!MoneyManager.Instance.Spend(price))
-        {
-            Debug.Log("No tienes suficiente dinero");
-            slotUI.ResetPosition();
-            return;
-        }
-
-        shopInventory.RemoveItem(item);
-        playerInventory.AddItem(item);
+            shopInventory.RemoveItem(item);
+            playerInventory.AddItem(item);
 
         audioSource.PlayOneShot(buySound);
 
         Debug.Log($"Comprado: {item.Name} (-{price})");
+    }
+
+        if (shopUIRoot == null || (slotUI as ItemSlotUI).GetInventory().tag != "Shop")
+        {
+            Debug.Log("Solo puedes comprar items de la tienda");
+            return;
+        }    
     }
 
     public void Sell()
@@ -78,29 +81,32 @@ public class ShopButtons : MonoBehaviour
             return;
         }
 
+        if (slotUI.transform.IsChildOf(playerUIRoot) || (slotUI as ItemSlotUI).GetInventory().tag == "Player")
+        {
+            ItemBase item = slotUI.GetItemBase();
+            if (item == null)
+            {
+                Debug.Log("Slot vacío");
+                return;
+            }
+
+            int gain = GetPrice(item);
+
+            playerInventory.RemoveItem(item);
+            shopInventory.AddItem(item);
+
+            MoneyManager.Instance.Add(gain);
+
+            audioSource.PlayOneShot(sellSound);
+
+
+        Debug.Log($"Vendido: {item.Name} (+{gain})");
+        }
+        
         if (playerUIRoot == null || (slotUI as ItemSlotUI).GetInventory().tag != "Player")
         {
             Debug.Log("Solo puedes vender items de tu inventario");
             return;
         }
-
-        ItemBase item = slotUI.GetItemBase();
-        if (item == null)
-        {
-            Debug.Log("Slot vacío");
-            return;
-        }
-
-        int gain = GetPrice(item);
-
-        playerInventory.RemoveItem(item);
-        shopInventory.AddItem(item);
-
-        MoneyManager.Instance.Add(gain);
-
-        audioSource.PlayOneShot(sellSound);
-
-
-        Debug.Log($"Vendido: {item.Name} (+{gain})");
     }
 }
