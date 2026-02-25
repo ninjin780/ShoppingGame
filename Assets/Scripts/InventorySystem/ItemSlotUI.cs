@@ -103,6 +103,11 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         return inventory;
     }
+
+    public Image GetImage()
+    {
+        return Image;
+    }
     public void OnPointerDown(PointerEventData eventData)
     {
         ItemClicked?.Invoke(this);

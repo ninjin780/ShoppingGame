@@ -1,2 +1,18 @@
 fileFormatVersion: 2
 guid: 6c2347df12400ef4b8f3f4355c280ba2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - playerInventory: {instanceID: 0}
+  - shopInventory: {instanceID: 0}
+  - playerUIRoot: {instanceID: 0}
+  - shopUIRoot: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - buySound: {instanceID: 0}
+  - sellSound: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

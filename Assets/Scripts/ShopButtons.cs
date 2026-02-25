@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ShopButtons : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class ShopButtons : MonoBehaviour
     [Header("UI Roots (Padres donde están los slots)")]
     [SerializeField] private Transform playerUIRoot;
     [SerializeField] private Transform shopUIRoot;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip buySound;
+    [SerializeField] private AudioClip sellSound;
+
 
     public void OnEnable()
     {
@@ -57,6 +64,8 @@ public class ShopButtons : MonoBehaviour
         shopInventory.RemoveItem(item);
         playerInventory.AddItem(item);
 
+        audioSource.PlayOneShot(buySound);
+
         Debug.Log($"Comprado: {item.Name} (-{price})");
     }
 
@@ -88,6 +97,9 @@ public class ShopButtons : MonoBehaviour
         shopInventory.AddItem(item);
 
         MoneyManager.Instance.Add(gain);
+
+        audioSource.PlayOneShot(sellSound);
+
 
         Debug.Log($"Vendido: {item.Name} (+{gain})");
     }
