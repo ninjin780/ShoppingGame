@@ -60,14 +60,10 @@ public class ItemSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        
         // Find scene objects colliding with mouse point on end dragging
         GameObject hitData = eventData.pointerCurrentRaycast.gameObject;
 
         canvasGroup.blocksRaycasts = true;
-
-
-
 
         if (hitData)
         {

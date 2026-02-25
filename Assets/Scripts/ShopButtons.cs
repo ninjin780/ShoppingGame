@@ -7,7 +7,7 @@ public class ShopButtons : MonoBehaviour
     [SerializeField] private Inventory playerInventory;
     [SerializeField] private Inventory shopInventory;
 
-    [Header("UI Roots (Padres donde est·n los slots)")]
+    [Header("UI Roots (Padres donde estÔøΩn los slots)")]
     [SerializeField] private Transform playerUIRoot;
     [SerializeField] private Transform shopUIRoot;
 
@@ -21,14 +21,17 @@ public class ShopButtons : MonoBehaviour
     {
         ItemSlotUI.BuyItem += Buy;
         ItemSlotUI.SellItem += Sell;
+        UseButton.UseItem += Use;
     }
     public void OnDisable()
     {
         ItemSlotUI.BuyItem -= Buy;
         ItemSlotUI.SellItem -= Sell;
+        UseButton.UseItem -= Use;
     }
 
     private int GetPrice(ItemBase item) => item.Cost;
+    private int GetHealth(ItemPotion item) => item.HealthPoints;
 
     public void Buy()
     {
@@ -44,7 +47,7 @@ public class ShopButtons : MonoBehaviour
             ItemBase item = slotUI.GetItemBase();
             if (item == null)
             {
-                Debug.Log("Slot vacÌo");
+                Debug.Log("Slot vac√≠o");
                 return;
             }
 
@@ -86,7 +89,7 @@ public class ShopButtons : MonoBehaviour
             ItemBase item = slotUI.GetItemBase();
             if (item == null)
             {
-                Debug.Log("Slot vacÌo");
+                Debug.Log("Slot vac√≠o");
                 return;
             }
 
@@ -101,6 +104,40 @@ public class ShopButtons : MonoBehaviour
 
 
         Debug.Log($"Vendido: {item.Name} (+{gain})");
+        }
+        
+        if (playerUIRoot == null || (slotUI as ItemSlotUI).GetInventory().tag != "Player")
+        {
+            Debug.Log("Solo puedes vender items de tu inventario");
+            return;
+        }
+    }
+
+    public void Use()
+    {
+        var slotUI = ItemSelection.SlotSelected;
+        if (slotUI == null)
+        {
+            Debug.Log("No hay item seleccionado");
+            return;
+        }
+
+        if (slotUI.transform.IsChildOf(playerUIRoot) || (slotUI as ItemSlotUI).GetInventory().tag == "Player")
+        {
+            ItemBase item = slotUI.GetItemBase();
+            if (item == null)
+            {
+                Debug.Log("Slot vac√≠o");
+                return;
+            }
+            if (item is ItemPotion)
+            {
+                int gain = GetHealth(item as ItemPotion);
+
+                playerInventory.RemoveItem(item);
+
+                PlayerHealth.Instance.Heal(gain);
+            }
         }
         
         if (playerUIRoot == null || (slotUI as ItemSlotUI).GetInventory().tag != "Player")
