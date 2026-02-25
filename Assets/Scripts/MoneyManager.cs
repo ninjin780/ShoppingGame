@@ -6,7 +6,7 @@ public class MoneyManager : MonoBehaviour
 {
     public static MoneyManager Instance { get; private set; }
 
-    private const string MONEY_KEY = "MONEY_VALUE";
+    private const string MONEY_KEY = "MONEY";
 
     [SerializeField] private int money = 100;
     [SerializeField] private TextMeshProUGUI moneyText;
@@ -21,7 +21,6 @@ public class MoneyManager : MonoBehaviour
 
         Instance = this;
 
-        LoadMoney();
         RefreshUI();
     }
 
@@ -40,7 +39,6 @@ public class MoneyManager : MonoBehaviour
         if (money < amount) return false;
 
         money -= amount;
-        SaveMoney();
         RefreshUI();
         return true;
     }
@@ -48,26 +46,13 @@ public class MoneyManager : MonoBehaviour
     public void Add(int amount)
     {
         money += amount;
-        SaveMoney();
         RefreshUI();
     }
 
     private void RefreshUI()
     {
         if (moneyText == null) return;
-
-        moneyText.text = Localizer.GetText("MONEY") + ": " + money;
-    }
-
-    private void SaveMoney()
-    {
-        PlayerPrefs.SetInt(MONEY_KEY, money);
-        PlayerPrefs.Save();
-    }
-
-    private void LoadMoney()
-    {
-        if (PlayerPrefs.HasKey(MONEY_KEY))
-            money = PlayerPrefs.GetInt(MONEY_KEY);
+        Debug.Log("Money: "+money);
+        moneyText.text = Localizer.GetText(MONEY_KEY) + ": " + money;
     }
 }
