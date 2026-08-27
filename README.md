@@ -1,39 +1,22 @@
-## Delivery 01 - $(Game Title)
-
-![$(Game Title)](Screenshots/screenshot01.png "$(Game Title)")
-
 ### Description
 
-$(Your Game Description)
+You want to buy and sell your items for the good of the world, now you can do it at this shop.
 
 ### Features
 
- - $(Game Feature 01)
- - $(Game Feature 02)
- - $(Game Feature 03)
+ - A full item shop with variety
 
 ### Controls
 
 Keyboard:
- - $(Game Control 01)
- - $(Game Control 02)
- - $(Game Control 03)
-
-### Screenshots
-
-_TODO: Show your game to the world, animated GIFs recommended!._
+ - Mouse: Drag and drop
 
 ### Developers
 
- - $(Developer 01) - $(Role/Tasks Developed)
- - $(Developer 02) - $(Role/Tasks Developed)
- - $(Developer 03) - $(Role/Tasks Developed)
-
-### Links
-
- - YouTube Gameplay: $(YouTube Link)
- - itch.io Release: $(itch.io Game Page)
- - Steam Release: $(Steam Game Page)
+ - David Arreciado - Programmer/Assets research
+ - Nil Brillarelli - Programmer/
+ - Helena Fernández   - Programmer/
+ - Jon Roviras    - Programmer/
 
 ### License
 
@@ -41,4 +24,4 @@ This game sources are licensed under MIT license. Check [LICENSE](LICENSE) for f
 
 $(Additional Licenses)
 
-*Copyright (c) $(Year) $(Developers Names)*
+*Copyright (c) 2026 David, Nil, Helena, Jon*
